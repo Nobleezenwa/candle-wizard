@@ -18,7 +18,7 @@ An unsupervised machine learning feed tool written in Python for recognizing and
 
 ### Condinum
 
-This class converts candle recognition markups into python objects to facilitate processing
+This class converts candle recognition markups into python objects to facilitate processing.
 This comes in handy when trying to describe custom candlestick patterns. It is a helper class for the CandleWizard class.
 Operators for initialization argument include:
 
@@ -68,7 +68,7 @@ Operators for initialization argument include:
 
 ### Chandler
 
-This class converts sample ohlcv data into a suitable python object to facilitate processing
+This class converts sample ohlcv data into a suitable python object to facilitate processing.
 
 ​		`candle = Chandler(timestamp, open, high, low, close, volume)`
 
@@ -104,9 +104,15 @@ Condinums are used to describe patterns.
 
 ​	 0 = means any number, any candle (+1 or -1) or is used to denote a ranging trend where applicable
 
-### Example
+## How to use
 
-The following example requires the Python MetaTrader5 library and an MT5 trading account
+Following the above schema, feel free to define your own custom candle patterns within the *cwiz.py* script.
+
+Then `import cwiz` into your program as seen in the Test program below.
+
+## Test
+
+The following example requires the Python MetaTrader5 library and an MT5 trading account. It will run checks for default patterns already defined within *cwiz.py*.
 
 ```python
 import cwiz
