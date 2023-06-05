@@ -31,46 +31,78 @@ Operators for initialization argument include:
 - use ; for , such that expressions such as max($1,$2,$3) becomes max[$1;$2;$3]
 
 ​	**Example 1**
+
 ​	`cndnm = Condinum('$1|<[$2-[abs[$2-$3]/2]]')`
+
 ​	This expression creates a Condinum object:
+
 ​		`$1` = assigns the value of the Condinum with the reference number 1 => Condinum($1) 
+
 ​		`|` = seperator
+
 ​		`<[$2-[abs[$2-$3]/2]` = this expression simply indicates that the value of this Condinum($1) must be less than half of the absolute difference between the value of Condinum($2) and value of Condinum($3) when it is substracted from the value of Condinum($2)
+
 ​	**Example 2**
+
 ​	`cndnm = Condinum('$1|x2')`
+
 ​		`$1` = assigns the value of the Condinum with the reference number 1 => Condinum($1) 
+
 ​		`|` = seperator
+
 ​		`xx2` = this indicates that the value of this Condinum must be twice the value of another Condinum (labeled xx1) in another candle
+
 ​	**Example 3**
+
 ​	`cndnm = Condinum('$2|x3|>=$1*0.8')`
+
 ​		`$2` = assigns the value of the Condinum with the reference number 2 => Condinum($2) 
+
 ​		`|` = seperator
+
 ​		`x3` = this indicates that this Condinum must be thrice the value of the Condinum (labeled x1) in the same candle
+
 ​		`|` = seperator
+
 ​		`>=$1*0.8` = this indicates that this Condinum must be greater than or equal to the product of 0.8 and Condinum($1)
 
 **Chandler**
 
 This class converts sample ohlcv data into a suitable python object to facilitate processing
-		`candle = Chandler(timestamp, open, high, low, close, volume)`
+
+​		`candle = Chandler(timestamp, open, high, low, close, volume)`
 
 **CandleWizard**
 
-This class searches for candle patterns in a given set of candle data
-Candle data is built from the Chandler class
-Each value in a given pattern is a typical Condinum
-	pattern format = [pattern_name, pattern_indication(+1 or -1), patterns(trends and/or candles)]
-		pattern_name = display name e.g. Three Black Crows
-		indication = a naive effort to assign a weight denoting what the effect of the pattern will be on future data (+1 means rise while -1 means fall)
-		patterns = 
-			(1 value) = (trendtype(-1,0,+1))
-			(4 values) = (open, high, low, close)
-			(5 values) = (candletype(-1,0,+1), uppershadow%, body%, lowershadow%, whole size)
-			(8 values) = (open, high, low, close, uppershadow%, body%, lowershadow%, whole size)
-			(9 values) = (candletype(-1,0,+1), open, high, low, close, uppershadow, body, lowershadow, whole size)
-	+1 = green candle or uptrend where applicable
-	-1 = red candle or downtrend where applicable
-	 0 = means any number, any candle (+1 or -1) or is used to denote a ranging trend where applicable
+This class searches for candle patterns in a given set of candle data.
+
+Candle data is built from the Chandler class.
+
+Condinums are used to describe patterns.
+
+​	pattern format = [pattern_name, pattern_indication(+1 or -1), patterns(trends and/or candles)]
+
+​		pattern_name = display name e.g. Three Black Crows
+
+​		indication = a naive effort to assign a weight denoting what the effect of the pattern will be on future data (+1 means rise while -1 means fall)
+
+​		patterns = 
+
+​			(1 value) = (trendtype(-1,0,+1))
+
+​			(4 values) = (open, high, low, close)
+
+​			(5 values) = (candletype(-1,0,+1), uppershadow%, body%, lowershadow%, whole size)
+
+​			(8 values) = (open, high, low, close, uppershadow%, body%, lowershadow%, whole size)
+
+​			(9 values) = (candletype(-1,0,+1), open, high, low, close, uppershadow, body, lowershadow, whole size)
+
+​	+1 = green candle or uptrend where applicable
+
+​	-1 = red candle or downtrend where applicable
+
+​	 0 = means any number, any candle (+1 or -1) or is used to denote a ranging trend where applicable
 
 **Example**
 
