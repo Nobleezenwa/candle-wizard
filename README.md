@@ -1,8 +1,8 @@
-## candle-wizard
+# candle-wizard
 
 An unsupervised machine learning feed tool written in Python for recognizing and classifying trading chart patterns. The tool features an internal custom candle pattern recognition schema.
 
-**Dependencies**
+## Dependencies
 
 - math
 - numpy
@@ -10,13 +10,13 @@ An unsupervised machine learning feed tool written in Python for recognizing and
 - copy
 - time
 
-**Classes**
+## Classes
 
 - Condinum
 - Chandler
 - CandleWizard
 
-**Condinum**
+### Condinum
 
 This class converts candle recognition markups into python objects to facilitate processing
 This comes in handy when trying to describe custom candlestick patterns. It is a helper class for the CandleWizard class.
@@ -30,7 +30,7 @@ Operators for initialization argument include:
 - use [] to group expressions
 - use ; for , such that expressions such as max($1,$2,$3) becomes max[$1;$2;$3]
 
-​	**Example 1**
+#### 	Example 1
 
 ​	`cndnm = Condinum('$1|<[$2-[abs[$2-$3]/2]]')`
 
@@ -42,7 +42,7 @@ Operators for initialization argument include:
 
 ​		`<[$2-[abs[$2-$3]/2]` = this expression simply indicates that the value of this Condinum($1) must be less than half of the absolute difference between the value of Condinum($2) and value of Condinum($3) when it is substracted from the value of Condinum($2)
 
-​	**Example 2**
+#### 	Example 2
 
 ​	`cndnm = Condinum('$1|x2')`
 
@@ -52,7 +52,7 @@ Operators for initialization argument include:
 
 ​		`xx2` = this indicates that the value of this Condinum must be twice the value of another Condinum (labeled xx1) in another candle
 
-​	**Example 3**
+#### 	Example 3
 
 ​	`cndnm = Condinum('$2|x3|>=$1*0.8')`
 
@@ -66,13 +66,13 @@ Operators for initialization argument include:
 
 ​		`>=$1*0.8` = this indicates that this Condinum must be greater than or equal to the product of 0.8 and Condinum($1)
 
-**Chandler**
+### Chandler
 
 This class converts sample ohlcv data into a suitable python object to facilitate processing
 
 ​		`candle = Chandler(timestamp, open, high, low, close, volume)`
 
-**CandleWizard**
+### CandleWizard
 
 This class searches for candle patterns in a given set of candle data.
 
@@ -104,7 +104,7 @@ Condinums are used to describe patterns.
 
 ​	 0 = means any number, any candle (+1 or -1) or is used to denote a ranging trend where applicable
 
-**Example**
+### Example
 
 The following example requires the Python MetaTrader5 library and an MT5 trading account
 
